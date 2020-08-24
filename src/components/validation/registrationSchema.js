@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import moment from "moment";
 
 const registrationSchema = yup.object().shape({
     username: yup
@@ -13,11 +14,20 @@ const registrationSchema = yup.object().shape({
       .string()
       .min(8, "Password must be at least 8 characters long")
       .required("Password is Required"),
-    // birthdate: yup
-    //    .
+    birthdate: yup.date().test(
+      "birthdate",
+      "You must be 18 or older to register",
+      value => {
+        const today = moment();
+        const birthdate = moment(value.toISOString());
+        const diffInYears = today.diff(birthdate, "years");
+        return diffInYears >= 18;
+      }
+    ).required("Birthdate is required"),
     terms: yup
-    .boolean()
-    .oneOf([true], "Please read and agree to the Terms of Service"),  
+    .bool()
+    .oneOf([true], 'Must Accept Terms and Conditions')
+    .required("You must read and agree to the Terms of Service"),  
   })
   
   export default registrationSchema

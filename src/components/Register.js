@@ -23,7 +23,7 @@ const initialRegisterErrors = {
   email: "",
   birthdate: "", //insert datepicker here
   password: "",
-  terms: false, //checkbox
+  terms: "", //checkbox
 };
 
 const intialRegistered = [];
@@ -67,7 +67,7 @@ const Register = () => {
   };
 
   //functionaity to input info while validating registration form has all required info
-  const registerInput = (name, value) => {
+  const updateRegisterInput = (name, value) => {
     yup
       .reach(formSchema, name)
       .validate(value)
@@ -91,24 +91,15 @@ const Register = () => {
 
   //terms checkbox
   const updateCheckbox = (name, isChecked) => {
-    setRegisterValues({
-      ...registerValues,
-      terms: {
+    updateRegisterInput('terms', {
         ...registerValues.terms,
         [name]: isChecked,
-      },
     });
   };
 
   //birthdate input
   const updateBirthdate = (birthdate) => {
-    setRegisterValues({
-      ...registerValues,
-      terms: {
-        ...registerValues.terms,
-        birthdate,
-      },
-    });
+      updateRegisterInput('birthdate', birthdate);
   };
 
   //submit button functionality
@@ -142,18 +133,13 @@ const Register = () => {
     updateCheckbox(name, checked);
   };
 
-  const onBirthdateChange = (event) => {
-    const { name, checked } = event.target;
-    updateBirthdate(name, checked);
-  };
-
   const onRegisterInput = (event) => {
     const { name, value } = event.target;
-    registerInput(name, value);
+    updateRegisterInput(name, value);
   };
 
   return (
-    <form>
+    <form onSubmit={onSignUp}>
       <h2>Sign Up Here</h2>
       <p>
         Get personalized results on the best strains and dosing to fit your
@@ -196,7 +182,7 @@ const Register = () => {
         </div>
       </label>
       <h4>
-        By checking here you agree to MedCabinet's{" "}
+        By checking here you agree to MedCabinet's
         <button>Privacy Policy</button> and <button>Terms of Use</button>.
       </h4>
       <label>
