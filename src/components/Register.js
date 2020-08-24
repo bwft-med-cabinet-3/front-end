@@ -1,8 +1,9 @@
 import React, { useState, useEffect }from "react";
 import axios from "axios";
 import * as yup from "yup";
-import formSchema from "./validation/formSchema";
+import formSchema from "./validation/registrationSchema";
 import styled from "styled-components";
+import moment from "moment";
 
 //set initial form shape and values
 const initialRegisterValues = {
