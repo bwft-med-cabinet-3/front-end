@@ -54,7 +54,7 @@ const Login = () => {
       });
   };
 
-  //functionaity to input info while validating order form has all required info
+  //functionaity to input info while validating login form has all required info
   const loginInput = (name, value) => {
     yup
       .reach(loginSchema, name)
