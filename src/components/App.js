@@ -3,6 +3,8 @@ import "./App.css";
 import About from "./About";
 import Login from "./Login";
 import Register from "./Register";
+import Symptoms from'./Symptoms';
+import Navigation from './Navigation';
 import { Link, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
         <h1>MedCabinet</h1>
         <nav>
           <div className="nav-links">
-            <Link to="/">About</Link>
+            <Link to="/about">About</Link>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
           </div>
@@ -28,6 +30,15 @@ function App() {
         <Route exact path="/register">
           <Register />
         </Route>
+        <Route exact path='/dispensaries'>
+        {/* <RecommendedDispensaries /> */}
+      </Route>
+      <Route  exact path='/strains/:id'>
+        {/* <IndividualStrainPage /> */}
+      </Route>
+      <Route path='/database'>
+        {/* <PopularStrainDetails /> */}
+      </Route>
       </Switch>
     </div>
   );
