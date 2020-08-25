@@ -3,9 +3,11 @@ import "./App.css";
 import About from "./About";
 import Login from "./Login";
 import Register from "./Register";
-import Symptoms from'./Symptoms';
-import Navigation from './Navigation';
+
+// import Navigation from './Navigation';
 import { Link, Route, Switch } from "react-router-dom";
+import Home from './Home';
+import CreateForm from './CreateForm';
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
         <h1>MedCabinet</h1>
         <nav>
           <div className="nav-links">
+            <Link to='/Home'>Home</Link>
             <Link to="/about">About</Link>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
@@ -21,11 +24,17 @@ function App() {
         </nav>
       </header>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/Home">
+          <Home />
+        </Route>
+        <Route exact path="/about">
           <About />
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/createform">
+          <CreateForm />
         </Route>
         <Route exact path="/register">
           <Register />

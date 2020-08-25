@@ -1,12 +1,18 @@
-import React from 'react'
-import Navigation from './components/Navigation'
+import React from 'react';
+// import Navigation from './Navigation';
+import header_img from './images/header_img.jpg';
 
 function Home() {
     return (
         <div>
-            <Navigation />
+        <header> 
+            <img src={header_img} alt="header logo"></img>
+        
+        </header>
+            
+            
         </div>
     )
 }
 
-export default Home
+export default Home;
