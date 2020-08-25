@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
 import formSchema from "./validation/registrationSchema";
-import styled from "styled-components";
+// import styled from "styled-components";
 import ReactDatePicker from "react-datepicker";
 
 //styling
 
-const DOBContainer = styled.div``;
+// const DOBContainer = styled.div``;
 
 //set initial form shape and values
 const initialRegisterValues = {
