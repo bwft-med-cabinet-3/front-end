@@ -61,7 +61,7 @@ const Register = () => {
         debugger;
       })
       .finally(() => {
-        console.log(newUsers);
+        console.log(user);
         setRegisterValues(initialRegisterValues);
       });
   };
@@ -86,14 +86,6 @@ const Register = () => {
     setRegisterValues({
       ...registerValues,
       [name]: value,
-    });
-  };
-
-  //terms checkbox
-  const updateCheckbox = (name, isChecked) => {
-    updateRegisterInput('terms', {
-        ...registerValues.terms,
-        [name]: isChecked,
     });
   };
 
@@ -130,7 +122,7 @@ const Register = () => {
 
   const onCheckboxChange = (event) => {
     const { name, checked } = event.target;
-    updateCheckbox(name, checked);
+    updateRegisterInput(name, checked);
   };
 
   const onRegisterInput = (event) => {
