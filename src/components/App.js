@@ -8,6 +8,8 @@ import Register from "./Register";
 import { Link, Route, Switch } from "react-router-dom";
 import Home from './Home';
 import CreateForm from './CreateForm';
+// import FavoriteStrains from "./FavoriteStrains";
+import ListDispensaries from "./ListDispensaries";
 
 function App() {
   return (
@@ -40,10 +42,10 @@ function App() {
           <Register />
         </Route>
         <Route exact path='/dispensaries'>
-        {/* <RecommendedDispensaries /> */}
+          <ListDispensaries />
       </Route>
       <Route  exact path='/strains/:id'>
-        {/* <IndividualStrainPage /> */}
+        {/* <FavoriteStrains /> */}
       </Route>
       <Route path='/database'>
         {/* <PopularStrainDetails /> */}

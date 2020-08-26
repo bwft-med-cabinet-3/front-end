@@ -3,6 +3,7 @@ import axios from "axios";
 import * as yup from "yup";
 import loginSchema from "./validation/loginSchema";
 import { useHistory, Link } from 'react-router-dom';
+import users from "../users.json"
 
 // import styled from "styled-components";
 
@@ -22,14 +23,14 @@ import { useHistory, Link } from 'react-router-dom';
 //set submit button to disabled
 // const disableButton = true;
 
-const Login = () => {
+export  default function Login() {
   // const [loginValues, setLoginValues] = useState(initialLoginValues);
   // const [orders, setOrders] = useState(initialCredentials);
   // const [disabled, setDisabled] = useState(disableButton);
   // const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
   
   const [ cred, setCred ] = useState({
-    username: '',
+    email: '',
     password: '',
     });
     
@@ -108,15 +109,28 @@ const Login = () => {
 
 
 const handleSubmit = e => {
+  console.log(cred)
+  
   e.preventDefault();
-  axios.post('https://med-cabinet-ol.herokuapp.com/login', `grant_type=password&username=${cred.username}&password=${cred.password}`, {
-    headers: {
-      // btoa is converting our client id/client secret into base64
-      Authorization: `Basic ${btoa('lambda-client:lambda-secret')}`,
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  })
+    axios.post('https://reqres.in/api/login/', cred, {
+    headers: { 
+          Authorization: "token"
+      }
+    })
+    
+  
+  // axios.post('https://med-cabinet-ol.herokuapp.com/login', `grant_type=password&username=${cred.username}&password=${cred.password}`, {
+  //   headers: {
+  //     // btoa is converting our client id/client secret into base64
+  //     Authorization: `Basic ${btoa('lambda-client:lambda-secret')}`,
+  //     'Content-Type': 'application/x-www-form-urlencoded'
+  //   }
+  // })
+  
+  
+  
   .then(res => {
+    console.log(res)
     localStorage.setItem('token', res.data.token);
     push('/Home');
   })
@@ -154,9 +168,9 @@ const handleSubmit = e => {
       <label>
         Username&nbsp;
         <input
-          value={cred.username}
+          value={cred.email}
           onChange={handleChange}
-          name="username"
+          name="email"
           type="text"
         />
       </label>
@@ -179,4 +193,4 @@ const handleSubmit = e => {
   );
 };
 
-export default Login;
+

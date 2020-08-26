@@ -1,0 +1,28 @@
+
+
+{
+"users":[
+{
+    
+    "id": 0,
+    "username": "William",
+    "password":"test123",
+    "email":"william@gmail.com",
+    "dob":"03/09/1986",
+    "favoriteDispensaries":[],
+    "favoriteStrain": []
+  
+  },
+  {
+  
+      "id": 1,
+      "username":"Jason",
+      "password":"Borne",
+      "email":"borne@yahoo.com",
+      "dob":"04/16/1990",
+      "favoriteDispensaries":[],
+      "favoriteStrain": []
+    
+    }
+]
+}

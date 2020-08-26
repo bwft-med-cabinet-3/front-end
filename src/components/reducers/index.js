@@ -4,16 +4,20 @@ import
     FETCH_DATA_FAILURE,
     POST_DATA_START,
     POST_DATA_SUCCESS,
-    POST_DATA_FAILURE } from "./actions/action";
+    POST_DATA_FAILURE } from "../actions/index";
 
 
 const initialState = {
   strain: [],
+  dispensaries: [],
+  favoriteStrain: [],
+  favoriteDispensaries: [],
   error: "",
   isFetching: false
 }
 
-export const reducer = (state = initialState, action)=>{
+const reducer = (state = initialState, action) => {
+
     switch(action.type){
 
         case FETCH_DATA_START:
@@ -32,5 +36,9 @@ export const reducer = (state = initialState, action)=>{
         default:
             return state;
 
+        }
     }
-}
+
+export default reducer;
+
+
